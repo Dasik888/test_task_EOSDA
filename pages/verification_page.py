@@ -8,6 +8,3 @@ class VerificationPage(BasePage):
 
     def fill_confirm_code(self, code):
         self.browser.find_element(*VerificationPageLocators.CONFIRM_CODE_FIELD).send_keys(code)
-
-    def should_be_fields_in_link(self):
-        self.is_link_correct("fields")

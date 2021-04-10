@@ -1,4 +1,3 @@
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -10,6 +9,7 @@ class BasePage:
         self.browser.implicitly_wait(timeout)
 
     def click_if_element_present(self, how, what):
+        self.browser.set_script_timeout(10)
         btn = WebDriverWait(self.browser, 20).until(
             EC.element_to_be_clickable((how, what))
         )
@@ -18,7 +18,7 @@ class BasePage:
 
     def is_link_correct(self, text):
         try:
-            WebDriverWait(self.browser, 10).until(
+            WebDriverWait(self.browser, 20).until(
                 EC.url_contains(text)
             )
         finally:

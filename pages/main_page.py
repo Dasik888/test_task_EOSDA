@@ -19,17 +19,23 @@ class MainPage(BasePage):
     def fill_last_name_in_sign_up_form(self):
         self.browser.find_element(*MainPageLocators.LAST_NAME_FIELD).send_keys("user_last_name")
 
-    def fill_email_in_sign_up_form(self):
-        self.browser.find_element(*MainPageLocators.EMAIL_FIELD).send_keys("vasyadasha328+10@gmail.com")
+    def fill_email_in_form(self, login):
+        self.browser.find_element(*MainPageLocators.EMAIL_FIELD).send_keys(login)
 
-    def fill_password_in_sign_up_form(self):
-        self.browser.find_element(*MainPageLocators.PASSWORD_FIELD).send_keys("Pp123456")
+    def fill_password_in_form(self, password):
+        self.browser.find_element(*MainPageLocators.PASSWORD_FIELD).send_keys(password)
 
     def choose_pp_checkbox_in_sign_up_form(self):
         self.browser.find_element(*MainPageLocators.PP_CHECKBOX).click()
 
     def click_sign_up_button(self):
         self.click_if_element_present(*MainPageLocators.SIGN_UP_BTN)
+
+    def go_to_login_form(self):
+        self.browser.find_element(*MainPageLocators.LOGIN_FORM_BTN).click()
+
+    def click_login_button(self):
+        self.click_if_element_present(*MainPageLocators.LOGIN_BTN)
 
     def get_code(self):
         time.sleep(60)
